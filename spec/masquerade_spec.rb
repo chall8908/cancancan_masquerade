@@ -1,6 +1,6 @@
 RSpec.describe CanCanCan::Masquerade do
   class HasPermissions
-    def initialize(opts={}); end
+    def initialize(opts = {}); end
   end
 
   class Ability
@@ -17,14 +17,16 @@ RSpec.describe CanCanCan::Masquerade do
 
     inherit_permissions_from :permission
 
-    def permission; HasPermissions.new; end
+    def permission
+      HasPermissions.new
+    end
   end
 
   let(:ability) { Ability.new }
   let(:inheritor) { Inheritor.new }
 
   it 'overrides the `extract_subjects` method' do
-    subject, _ = ability.extract_subjects(inheritor)
+    subject, = ability.extract_subjects(inheritor)
 
     expect(subject).to be_a HasPermissions
   end

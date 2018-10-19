@@ -1,6 +1,6 @@
 RSpec.describe CanCanCan::Masquerade::InheritPermissions do
   class HasPermissions
-    def initialize(opts={}); end
+    def initialize(opts = {}); end
   end
 
   class Ability
@@ -62,7 +62,9 @@ RSpec.describe CanCanCan::Masquerade::InheritPermissions do
 
         inherit_permissions_from :permission
 
-        def permission; HasPermissions.new; end
+        def permission
+          HasPermissions.new
+        end
       end.new
     end
 

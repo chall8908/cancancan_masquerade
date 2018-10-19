@@ -1,11 +1,9 @@
 module CanCanCan
   module Masquerade
     module InheritPermissions
-
       protected
 
-      def inherit_permissions_from record, mapping: nil
-
+      def inherit_permissions_from(record, mapping: nil)
         case record
         when /^@/   then permissions_from_instance_variable(record)
         when Symbol then permissions_from_method(record)
@@ -15,7 +13,7 @@ module CanCanCan
         end
       end
 
-      def build_permission_instance &block
+      def build_permission_instance(&block)
         define_method(:to_permission_instance, &block)
       end
 
@@ -31,7 +29,7 @@ module CanCanCan
 
       def permissions_from_constructed_class(class_to_build, mapping)
         unless mapping.is_a?(Hash)
-          raise InvalidPermissionConfiguration, "Must supply a `mapping:` when building from a Class"
+          raise InvalidPermissionConfiguration, 'Must supply a `mapping:` when building from a Class'
         end
 
         build_permission_instance do

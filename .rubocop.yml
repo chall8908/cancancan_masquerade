@@ -1,0 +1,9 @@
+AllCops:
+  Exclude:
+    - 'bin/*'
+
+Metrics/LineLength:
+  Enabled: false
+
+Style/AndOr:
+  Enabled: false
